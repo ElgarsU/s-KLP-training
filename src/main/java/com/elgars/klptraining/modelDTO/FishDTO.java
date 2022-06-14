@@ -22,11 +22,9 @@ public class FishDTO {
     public Long getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public Boolean getRestricted() {
         return restricted;
     }
@@ -34,12 +32,36 @@ public class FishDTO {
     public static Builder builder() {
         return new Builder();
     }
+
     public Builder copyBuilder() {
         return builder()
                 .id(getId())
                 .name(getName())
                 .restricted(getRestricted());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FishDTO)) return false;
+        FishDTO fish = (FishDTO) o;
+        return id.equals(fish.id) && name.equals(fish.name) && restricted.equals(fish.restricted);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, restricted);
+    }
+
+    @Override
+    public String   toString() {
+        return new StringJoiner(", ", FishDTO.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("restricted=" + restricted)
+                .toString();
+    }
+
     @JsonPOJOBuilder(withPrefix = "")
     public static class Builder {
 
@@ -67,27 +89,5 @@ public class FishDTO {
         public FishDTO build() {
             return new FishDTO(this);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FishDTO)) return false;
-        FishDTO fish = (FishDTO) o;
-        return id.equals(fish.id) && name.equals(fish.name) && restricted.equals(fish.restricted);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, restricted);
-    }
-
-    @Override
-    public String   toString() {
-        return new StringJoiner(", ", FishDTO.class.getSimpleName() + "[", "]")
-                .add("id=" + id)
-                .add("name='" + name + "'")
-                .add("restricted=" + restricted)
-                .toString();
     }
 }

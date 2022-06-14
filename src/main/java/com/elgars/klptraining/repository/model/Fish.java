@@ -20,6 +20,7 @@ public class Fish {
     private String name;
     @Column
     private Boolean restricted;
+//    private Lake lake;
 
 //TODO public no args constructor for entity class??
     public Fish() {
@@ -29,6 +30,7 @@ public class Fish {
         this.id = b.id;
         this.name = b.name;
         this.restricted = b.restricted;
+//        this.lake = lake;
     }
 
     public Long getId() {
@@ -46,6 +48,7 @@ public class Fish {
     public static Builder builder() {
         return new Builder();
     }
+
     public Builder copyBuilder() {
         return builder()
                 .id(getId())

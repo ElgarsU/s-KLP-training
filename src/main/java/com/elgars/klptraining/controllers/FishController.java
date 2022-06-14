@@ -5,8 +5,8 @@ import com.elgars.klptraining.service.implementation.FishService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,7 +20,7 @@ public class FishController {
     }
 
     @GetMapping("/fishes/{name}")
-    public ResponseEntity<FishDTO> findFishNamed(@RequestParam String name) {
+    public ResponseEntity<FishDTO> findFishNamed(@PathVariable String name) {
         FishDTO namedFish = service.getFishByName(name);
         return new ResponseEntity<>(namedFish, HttpStatus.OK);
     }

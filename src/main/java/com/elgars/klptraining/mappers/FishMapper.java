@@ -21,6 +21,5 @@ public class FishMapper {
                 .name(fishDTO.getName())
                 .restricted(fishDTO.getRestricted())
                 .build();
-
     }
 }
