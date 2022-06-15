@@ -2,9 +2,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: create
+    hibernate.ddl-auto: none
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:mydb
@@ -13,7 +11,8 @@ spring:
   h2:
     console:
       enabled: true
-
+  flyway:
+    enabled: true
 server:
   error:
     include-message: always
