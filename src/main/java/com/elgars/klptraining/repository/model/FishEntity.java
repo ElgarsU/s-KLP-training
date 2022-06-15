@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
-@Table
+@Table(name = "fish")
 public class FishEntity {
 
     @Id

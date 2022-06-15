@@ -1,10 +1,12 @@
-package com.elgars.klptraining.service;
+package com.elgars.klptraining.service.implementation;
 
 import com.elgars.klptraining.modelDTO.LakeItem;
+import com.elgars.klptraining.service.LakeServiceInterface;
 
 import java.util.List;
 
 public class LakeService implements LakeServiceInterface {
+
     @Override
     public LakeItem getLake() {
         return null;
