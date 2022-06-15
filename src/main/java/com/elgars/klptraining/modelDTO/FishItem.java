@@ -6,14 +6,14 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@JsonDeserialize(builder = FishDTO.Builder.class)
-public class FishDTO {
+@JsonDeserialize(builder = FishItem.Builder.class)
+public class FishItem {
 
     private final Long id;
     private final String name;
     private final Boolean restricted;
 
-    public FishDTO(Builder b) {
+    public FishItem(Builder b) {
         this.id = b.id;
         this.name = b.name;
         this.restricted = b.restricted;
@@ -43,8 +43,8 @@ public class FishDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof FishDTO)) return false;
-        FishDTO fish = (FishDTO) o;
+        if (!(o instanceof FishItem)) return false;
+        FishItem fish = (FishItem) o;
         return id.equals(fish.id) && name.equals(fish.name) && restricted.equals(fish.restricted);
     }
 
@@ -55,7 +55,7 @@ public class FishDTO {
 
     @Override
     public String   toString() {
-        return new StringJoiner(", ", FishDTO.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", FishItem.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("name='" + name + "'")
                 .add("restricted=" + restricted)
@@ -86,8 +86,8 @@ public class FishDTO {
             return this;
         }
 
-        public FishDTO build() {
-            return new FishDTO(this);
+        public FishItem build() {
+            return new FishItem(this);
         }
     }
 }

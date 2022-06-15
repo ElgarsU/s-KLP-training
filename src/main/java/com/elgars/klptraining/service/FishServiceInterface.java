@@ -1,18 +1,18 @@
 package com.elgars.klptraining.service;
 
-import com.elgars.klptraining.modelDTO.FishDTO;
+import com.elgars.klptraining.modelDTO.FishItem;
 
 import java.util.List;
 
 public interface FishServiceInterface {
 
-    FishDTO getFish(Long id);
+    FishItem getFish(Long id);
 
-    FishDTO getFishByName(String name);
+    FishItem getFishByName(String name);
 
-    List<FishDTO> getAllFishes();
+    List<FishItem> getAllFishes();
 
-    FishDTO saveFish(FishDTO fishDTO);
+    FishItem saveFish(FishItem fishItem);
 
-    void deleteFish(Long id);
+    void deleteFishByID(Long id);
 }

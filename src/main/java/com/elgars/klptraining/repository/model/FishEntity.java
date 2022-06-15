@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 
 @Entity
 @Table
-public class Fish {
+public class FishEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,11 +22,10 @@ public class Fish {
     private Boolean restricted;
 //    private Lake lake;
 
-//TODO public no args constructor for entity class??
-    public Fish() {
+    public FishEntity() {
     }
 
-    private Fish (Builder b) {
+    private FishEntity(Builder b) {
         this.id = b.id;
         this.name = b.name;
         this.restricted = b.restricted;
@@ -55,13 +54,37 @@ public class Fish {
                 .name(getName())
                 .restricted(getRestricted());
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FishEntity)) return false;
+        FishEntity fish = (FishEntity) o;
+        return id.equals(fish.id) && name.equals(fish.name) && restricted.equals(fish.restricted);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, restricted);
+    }
+
+    @Override
+    public String   toString() {
+        return new StringJoiner(", ", FishEntity.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .add("restricted=" + restricted)
+                .toString();
+    }
+
     public static class Builder {
 
         private Long id;
         private String name;
-        private Boolean restricted;
 
+        private Boolean restricted;
 //TODO why builder no args constructor is private? and do we need to explicitly declare one?
+
         private Builder() {
         }
 
@@ -79,31 +102,9 @@ public class Fish {
             this.restricted = restricted;
             return this;
         }
-
-        public Fish build() {
-            return new Fish(this);
+        public FishEntity build() {
+            return new FishEntity(this);
         }
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Fish)) return false;
-        Fish fish = (Fish) o;
-        return id.equals(fish.id) && name.equals(fish.name) && restricted.equals(fish.restricted);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, restricted);
-    }
-
-    @Override
-    public String   toString() {
-        return new StringJoiner(", ", Fish.class.getSimpleName() + "[", "]")
-                .add("id=" + id)
-                .add("name='" + name + "'")
-                .add("restricted=" + restricted)
-                .toString();
     }
 }

@@ -1,13 +1,13 @@
 package com.elgars.klptraining.repository;
 
-import com.elgars.klptraining.repository.model.Fish;
+import com.elgars.klptraining.repository.model.FishEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface FishRepository extends JpaRepository<Fish, Long> {
+public interface FishRepository extends JpaRepository<FishEntity, Long> {
 
-    Optional<Fish> findByName(String name);
+    Optional<FishEntity> findByNameContaining(String name);
 }

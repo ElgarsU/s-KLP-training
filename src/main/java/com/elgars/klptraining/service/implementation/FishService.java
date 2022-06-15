@@ -1,9 +1,9 @@
 package com.elgars.klptraining.service.implementation;
 
 import com.elgars.klptraining.mappers.FishMapper;
-import com.elgars.klptraining.modelDTO.FishDTO;
+import com.elgars.klptraining.modelDTO.FishItem;
 import com.elgars.klptraining.repository.FishRepository;
-import com.elgars.klptraining.repository.model.Fish;
+import com.elgars.klptraining.repository.model.FishEntity;
 import com.elgars.klptraining.service.FishServiceInterface;
 import org.springframework.stereotype.Service;
 
@@ -23,46 +23,46 @@ public class FishService implements FishServiceInterface {
     }
 
     @Override
-    public FishDTO getFish(Long id) {
-        Optional<Fish> fish = repository.findById(id);
-        FishDTO fishDTO = null;
+    public FishItem getFish(Long id) {
+        Optional<FishEntity> fish = repository.findById(id);
+        FishItem fishItem = null;
         if (fish.isPresent()) {
-            fishDTO = mapper.fishToFishDTO(fish.get());
+            fishItem = mapper.fishEntityToFishItem(fish.get());
         }
-        return fishDTO;
+        return fishItem;
     }
 
     @Override
-    public FishDTO getFishByName(String name) {
-        Optional<Fish> fish = repository.findByName(name);
-        FishDTO fishDTO = null;
+    public FishItem getFishByName(String name) {
+        Optional<FishEntity> fish = repository.findByNameContaining(name);
+        FishItem fishItem = null;
         if (fish.isPresent()) {
-            fishDTO = mapper.fishToFishDTO(fish.get());
+            fishItem = mapper.fishEntityToFishItem(fish.get());
         }
-        return fishDTO;
+        return fishItem;
     }
 
     @Override
-    public List<FishDTO> getAllFishes() {
-        List<Fish> fishList = repository.findAll();
-        List<FishDTO> fishDTOList = null;
+    public List<FishItem> getAllFishes() {
+        List<FishEntity> fishList = repository.findAll();
+        List<FishItem> fishItemList = null;
         if (!fishList.isEmpty()) {
-            fishDTOList = fishList.stream()
-                    .map(mapper::fishToFishDTO)
+            fishItemList = fishList.stream()
+                    .map(mapper::fishEntityToFishItem)
                     .collect(Collectors.toList());
         }
-        return fishDTOList;
+        return fishItemList;
     }
 
     @Override
-    public FishDTO saveFish(FishDTO fishDTO) {
-        Fish savedFish = repository.save(mapper.fishDTOtoFish(fishDTO));
-        return mapper.fishToFishDTO(savedFish);
+    public FishItem saveFish(FishItem fishItem) {
+        FishEntity savedFish = repository.save(mapper.fishItemToFishEntity(fishItem));
+        return mapper.fishEntityToFishItem(savedFish);
     }
 
     @Override
-    public void deleteFish(Long id) {
-        Optional<Fish> fish = repository.findById(id);
+    public void deleteFishByID(Long id) {
+        Optional<FishEntity> fish = repository.findById(id);
         if (fish.isPresent()) {
             repository.deleteById(id);
         }

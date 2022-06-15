@@ -1,36 +1,48 @@
-package com.elgars.klptraining.modelDTO;
+package com.elgars.klptraining.repository.model;
 
-import com.elgars.klptraining.repository.model.Fish;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@JsonDeserialize(builder = FishDTO.Builder.class)
-public class LakeDTO {
+@Entity
+@Table
+public class LakeEntity {
 
-    private final Long id;
-    private final String name;
-    private final Integer depth;
-    //private final List<Fish> fishes;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
+    private String name;
+    @Column
+    private Integer depth;
+//    private List<Fish> fishes;
 
-    private LakeDTO(Builder b) {
+    public LakeEntity() {}
+
+    private LakeEntity(Builder b) {
         this.id = b.id;
         this.name = b.name;
         this.depth = b.depth;
 //        this.fishes = b.fishes;
     }
+
     public Long getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
+
     public Integer getDepth() {
         return depth;
     }
+
 //    public List<Fish> getFishes() {
 //        return fishes;
 //    }
@@ -49,10 +61,11 @@ public class LakeDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof LakeDTO)) return false;
-        LakeDTO lakeDTO = (LakeDTO) o;
-        return id.equals(lakeDTO.id) && name.equals(lakeDTO.name) && Objects.equals(depth, lakeDTO.depth);
+        if (!(o instanceof LakeEntity)) return false;
+        LakeEntity lakeEntity = (LakeEntity) o;
+        return id.equals(lakeEntity.id) && name.equals(lakeEntity.name) && depth.equals(lakeEntity.depth);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name, depth);
@@ -60,42 +73,43 @@ public class LakeDTO {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", LakeDTO.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", LakeEntity.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("name='" + name + "'")
                 .add("depth=" + depth)
                 .toString();
     }
 
-    @JsonPOJOBuilder(withPrefix = "")
     public static class Builder {
 
         private Long id;
+
         private String name;
         private Integer depth;
 //        private List<Fish> fishes;
-
         private Builder() {
 
         }
-        public Builder id(Long id) {
+        public Builder id(final Long id) {
             this.id = id;
             return this;
         }
-        public Builder name(String name) {
+        public Builder name(final String name) {
             this.name = name;
             return this;
         }
-        public Builder depth(Integer depth) {
+        public Builder depth(final Integer depth) {
             this.depth = depth;
             return this;
         }
-//        public Builder fishes(List<Fish> fishes) {
+//        public Builder fishes(final List<Fish> fishes) {
 //            this.fishes = fishes;
 //            return this;
 //        }
-        public LakeDTO build() {
-            return new LakeDTO(this);
+
+        public LakeEntity build() {
+            return new LakeEntity(this);
         }
+
     }
 }

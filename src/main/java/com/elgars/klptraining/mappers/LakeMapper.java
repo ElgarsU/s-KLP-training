@@ -1,25 +1,25 @@
 package com.elgars.klptraining.mappers;
 
-import com.elgars.klptraining.modelDTO.LakeDTO;
-import com.elgars.klptraining.repository.model.Lake;
+import com.elgars.klptraining.modelDTO.LakeItem;
+import com.elgars.klptraining.repository.model.LakeEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public class LakeMapper {
 
-    public LakeDTO lakeToLakeDTO(Lake lake) {
-        return LakeDTO.builder()
-                .id(lake.getId())
-                .name(lake.getName())
-                .depth(lake.getDepth())
+    public LakeItem lakeEntityToLakeItem(LakeEntity lakeEntity) {
+        return LakeItem.builder()
+                .id(lakeEntity.getId())
+                .name(lakeEntity.getName())
+                .depth(lakeEntity.getDepth())
                 .build();
     }
 
-    public Lake lakeDTOtoLake(LakeDTO lakeDTO) {
-        return Lake.builder()
-                .id(lakeDTO.getId())
-                .name(lakeDTO.getName())
-                .depth(lakeDTO.getDepth())
+    public LakeEntity lakeItemtoLakeEntity(LakeItem lakeItem) {
+        return LakeEntity.builder()
+                .id(lakeItem.getId())
+                .name(lakeItem.getName())
+                .depth(lakeItem.getDepth())
                 .build();
     }
 }
