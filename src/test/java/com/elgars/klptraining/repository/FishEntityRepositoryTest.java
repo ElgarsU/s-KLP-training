@@ -15,7 +15,6 @@ class FishEntityRepositoryTest {
     private final Boolean restricted = false;
     private final FishRepository repository;
 
-//TODO in this context, without autowired tests does not work
     @Autowired
     public FishEntityRepositoryTest(FishRepository repository) {
         this.repository = repository;

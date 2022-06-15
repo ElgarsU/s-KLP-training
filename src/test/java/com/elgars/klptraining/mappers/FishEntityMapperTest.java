@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//TODO annotations for this test?
 class FishEntityMapperTest {
 
     private final Long id = 1L;
@@ -15,7 +14,7 @@ class FishEntityMapperTest {
     private final FishMapper mapper = new FishMapper();
 
     @Test
-    void fishToFishDTO() {
+    void fishEntityToFishItem() {
         FishEntity fishEntity = FishEntity.builder().id(id).name(name).restricted(restricted).build();
         FishItem fishItem = mapper.fishEntityToFishItem(fishEntity);
 
@@ -25,7 +24,7 @@ class FishEntityMapperTest {
     }
 
     @Test
-    void fishDTOtoFish() {
+    void fishItemToFishEntity() {
         FishItem fishItem = FishItem.builder().id(id).name(name).restricted(restricted).build();
         FishEntity fishEntity = mapper.fishItemToFishEntity(fishItem);
 

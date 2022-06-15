@@ -15,7 +15,7 @@ public class LakeMapper {
                 .build();
     }
 
-    public LakeEntity lakeItemtoLakeEntity(LakeItem lakeItem) {
+    public LakeEntity lakeItemToLakeEntity(LakeItem lakeItem) {
         return LakeEntity.builder()
                 .id(lakeItem.getId())
                 .name(lakeItem.getName())

@@ -42,6 +42,7 @@ public class LakeItem {
                 .id(getId())
                 .name(getName())
                 .depth(getDepth());
+//                .fishes(getFishes());
     }
 
     @Override

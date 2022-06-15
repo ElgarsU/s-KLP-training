@@ -44,6 +44,10 @@ public class FishEntity {
         return restricted;
     }
 
+//    public Lake getLake() {
+//        return lake;
+//    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -53,6 +57,7 @@ public class FishEntity {
                 .id(getId())
                 .name(getName())
                 .restricted(getRestricted());
+//                .lake(getLake());
     }
 
     @Override
@@ -81,9 +86,8 @@ public class FishEntity {
 
         private Long id;
         private String name;
-
         private Boolean restricted;
-//TODO why builder no args constructor is private? and do we need to explicitly declare one?
+//        private Lake lake;
 
         private Builder() {
         }
@@ -102,6 +106,12 @@ public class FishEntity {
             this.restricted = restricted;
             return this;
         }
+
+//        public Builder lake(final Lake lake) {
+//            this.lake = lake;
+//            return this;
+//        }
+
         public FishEntity build() {
             return new FishEntity(this);
         }

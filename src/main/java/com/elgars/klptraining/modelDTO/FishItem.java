@@ -12,11 +12,12 @@ public class FishItem {
     private final Long id;
     private final String name;
     private final Boolean restricted;
-
+//    private final Lake lake;
     public FishItem(Builder b) {
         this.id = b.id;
         this.name = b.name;
         this.restricted = b.restricted;
+//        this.lake = b.lake;
     }
 
     public Long getId() {
@@ -28,6 +29,9 @@ public class FishItem {
     public Boolean getRestricted() {
         return restricted;
     }
+//    public Lake getLake() {
+//        return lake;
+//    }
 
     public static Builder builder() {
         return new Builder();
@@ -38,6 +42,7 @@ public class FishItem {
                 .id(getId())
                 .name(getName())
                 .restricted(getRestricted());
+//                .lake(getLake());
     }
 
     @Override
@@ -68,6 +73,7 @@ public class FishItem {
         private Long id;
         private String name;
         private Boolean restricted;
+//        private Lake lake;
         private Builder() {
         }
 
@@ -85,6 +91,11 @@ public class FishItem {
             this.restricted = restricted;
             return this;
         }
+
+//        public Builder lake(Lake lake) {
+//            this.lake = lake;
+//            return this;
+//        }
 
         public FishItem build() {
             return new FishItem(this);

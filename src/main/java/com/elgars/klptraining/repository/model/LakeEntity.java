@@ -56,6 +56,7 @@ public class LakeEntity {
                 .id(getId())
                 .name(getName())
                 .depth(getDepth());
+//                .fishes(getFishes());
     }
 
     @Override
@@ -87,6 +88,7 @@ public class LakeEntity {
         private String name;
         private Integer depth;
 //        private List<Fish> fishes;
+
         private Builder() {
 
         }
@@ -102,6 +104,7 @@ public class LakeEntity {
             this.depth = depth;
             return this;
         }
+
 //        public Builder fishes(final List<Fish> fishes) {
 //            this.fishes = fishes;
 //            return this;
