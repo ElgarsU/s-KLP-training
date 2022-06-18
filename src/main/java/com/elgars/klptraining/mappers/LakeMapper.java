@@ -22,4 +22,12 @@ public class LakeMapper {
                 .depth(lakeItem.getDepth())
                 .build();
     }
+
+    public LakeEntity saveLakeItemToLakeEntity(LakeItem lakeItem) {
+        return LakeEntity.builder()
+                .id(lakeItem.getId())
+                .name(lakeItem.getName())
+                .depth(lakeItem.getDepth())
+                .build();
+    }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface FishServiceInterface {
 
-    FishItem getFish(Long id);
+    FishItem getFishByID(Long id);
 
     FishItem getFishByName(String name);
 

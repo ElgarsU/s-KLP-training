@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface LakeServiceInterface {
 
-    LakeItem getLake();
+    LakeItem getLakeByID(Long ID);
 
-    LakeItem getLakeByNameDepthBiggerThan(String name, Integer depth);
+    List<LakeItem> getLakeMinDepth(Integer depth);
 
     List<LakeItem> getAllLakes();
 

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-@JsonDeserialize(builder = FishItem.Builder.class)
+@JsonDeserialize(builder = LakeItem.Builder.class)
 public class LakeItem {
 
     private final Long id;
@@ -77,15 +77,15 @@ public class LakeItem {
         private Builder() {
 
         }
-        public Builder id(Long id) {
+        public Builder id(final Long id) {
             this.id = id;
             return this;
         }
-        public Builder name(String name) {
+        public Builder name(final String name) {
             this.name = name;
             return this;
         }
-        public Builder depth(Integer depth) {
+        public Builder depth(final Integer depth) {
             this.depth = depth;
             return this;
         }

@@ -23,7 +23,7 @@ public class FishService implements FishServiceInterface {
     }
 
     @Override
-    public FishItem getFish(Long id) {
+    public FishItem getFishByID(Long id) {
         Optional<FishEntity> fish = repository.findById(id);
         FishItem fishItem = null;
         if (fish.isPresent()) {
